@@ -1,4 +1,4 @@
-/* Background with Image Overlay */
+/* Background with Image Overlay *
 body {
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85)), 
                 url('http://googleusercontent.com/image_collection/image_retrieval/42238133502511563');
