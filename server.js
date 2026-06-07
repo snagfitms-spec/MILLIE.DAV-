@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 });
 
 // MongoDB connection (we will add your string next)
-const MONGO_URI = "PASTE_YOUR_CONNECTION_STRING_HERE";
+const MONGO_URI = "mongodb+srv://snagfitms_db_user:t6slZMwQCcsB2h84@booking1.eemnqgj.mongodb.net/?appName=Booking1;
 
 mongoose.connect(MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
