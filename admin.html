@@ -48,6 +48,9 @@
   }
 
   async function deleteBooking(id) {
+    if (localStorage.getItem("auth") !== "true") {
+  window.location.href = "login.html";
+      }
     await fetch(`${API}/${id}`, { method: "DELETE" });
     loadBookings();
   }
