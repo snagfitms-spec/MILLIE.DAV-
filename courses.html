@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Courses</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | MillieDev</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="portfolio.html">Portfolio</a>
-  <a href="courses.html">Courses</a>
-  <a href="about.html">About</a>
-  <a href="bookings.html">Booking</a>
-</nav>
+    <nav>
+        <div class="logo">MillieDev</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+        </ul>
+    </nav>
 
-<section class="hero">
-  <h1>Courses</h1>
-  <p>Learn web development, design, and digital skills.</p>
-</section>
+    <section class="section">
+        <h1>Courses</h1>
+        <p>Learn web development, design, and digital skills.</p>
+        
+        <br>
 
-<section class="grid">
-  <div class="card">HTML & CSS Basics</div>
-  <div class="card">JavaScript Fundamentals</div>
-  <div class="card">Full Stack Intro</div>
-</section>
+        <!-- The feed container forces the vertical stack -->
+        <div class="courses-container">
+            <div class="feed-card">
+                <h3>HTML & CSS Basics</h3>
+                <p>Master the building blocks of the web.</p>
+            </div>
+            <div class="feed-card">
+                <h3>JavaScript Fundamentals</h3>
+                <p>Learn to make your websites interactive.</p>
+            </div>
+            <div class="feed-card">
+                <h3>Full Stack Intro</h3>
+                <p>Understand the end-to-end development process.</p>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
