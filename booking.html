@@ -1,37 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Book a Service</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial; background: #070A12; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-    .box { background: #11182a; padding: 25px; border-radius: 12px; width: 90%; max-width: 350px; box-shadow: 0 0 15px rgba(0,0,0,0.4); }
-    h2 { text-align: center; margin-bottom: 15px; }
-    input, select, textarea { width: 100%; padding: 10px; margin-top: 10px; border: none; border-radius: 6px; outline: none; box-sizing: border-box; }
-    textarea { resize: none; height: 80px; }
-    button { width: 100%; margin-top: 15px; padding: 12px; background: #6C63FF; border: none; color: white; cursor: pointer; border-radius: 6px; font-weight: bold; }
-    button:disabled { background: gray; }
-    #msg { margin-top: 10px; font-size: 14px; text-align: center; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service | MillieDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-  <div id="booking-section" class="box">
-    <h2>Book a Service</h2>
-    <input id="name" placeholder="Your Name">
-    <input id="email" placeholder="Your Email">
-    <select id="service">
-      <option value="Website Design">Website Design</option>
-      <option value="Landing Page">Landing Page</option>
-      <option value="Full Website">Full Website</option>
-      <option value="SEO Setup">SEO Setup</option>
-    </select>
-    <textarea id="message" placeholder="Describe your project..."></textarea>
-    <button id="btn" onclick="bookService()">Submit Booking</button>
-    <p id="msg"></p>
-  </div>
+    <nav>
+        <div class="logo"><h2>MillieDev</h2></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
 
-  <script src="booking.js"></script>
+    <section class="container">
+        <div class="box">
+            <h2>Book a Service</h2>
+            <input id="name" placeholder="Your Name">
+            <input id="email" placeholder="Your Email">
+            <select id="service">
+                <option value="Website Design">Website Design</option>
+                <option value="Landing Page">Landing Page</option>
+            </select>
+            <textarea id="message" placeholder="Describe your project..."></textarea>
+            <button id="btn" onclick="bookService()">Submit Booking</button>
+            <p id="msg"></p>
+        </div>
+    </section>
+
+    <script src="booking.js"></script>
 </body>
 </html>
+
 
