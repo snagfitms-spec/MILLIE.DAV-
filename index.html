@@ -4,101 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MillieDev | Digital Solutions</title>
+
     <style>
-        :root { --bg: #070A12; --card: #11182a; --primary: #6C63FF; --text: #ffffff; --muted: rgba(255,255,255,0.7); }
+        :root { 
+            --bg: #070A12; 
+            --card: #11182a; 
+            --primary: #6C63FF; 
+            --text: #ffffff; 
+            --muted: rgba(255,255,255,0.7); 
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
         body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; position: sticky; top: 0; background: rgba(7, 10, 18, 0.9); z-index: 1000; }
-        nav h2 { color: var(--primary); }
-        nav ul { display: flex; list-style: none; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-size: 0.9rem; }
+        /* NAVIGATION FIX (IMPORTANT) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 5%; 
+            position: sticky; 
+            top: 0; 
+            background: rgba(7, 10, 18, 0.95); 
+            z-index: 1000; 
+        }
 
-        /* Hero Section */
-        .hero { display: flex; align-items: center; justify-content: space-between; padding: 100px 5%; gap: 50px; }
+        nav h2 { color: var(--primary); }
+
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 18px; 
+        }
+
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO */
+        .hero { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 100px 5%; 
+            gap: 50px; 
+        }
+
         .hero-text { max-width: 50%; }
-        .hero-text h1 { font-size: 3.5rem; margin-bottom: 20px; }
+
+        .hero-text h1 { font-size: 3rem; margin-bottom: 20px; }
+
         .hero-text span { color: var(--primary); }
 
-        /* Form Styling */
-        .form-container { width: 400px; background: var(--card); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #0b0f1a; border: 1px solid #2a3447; color: white; border-radius: 8px; }
-        button { width: 100%; padding: 14px; background: var(--primary); border: none; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        /* BOOKING FORM */
+        .form-container { 
+            width: 400px; 
+            background: var(--card); 
+            padding: 30px; 
+            border-radius: 16px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+        }
 
-        /* Sections */
+        input, textarea { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            background: #0b0f1a; 
+            border: 1px solid #2a3447; 
+            color: white; 
+            border-radius: 8px; 
+        }
+
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            background: var(--primary); 
+            border: none; 
+            color: white; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+        }
+
+        /* SECTIONS */
         .section { padding: 80px 5%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: var(--card); padding: 30px; border-radius: 12px; text-align: center; }
 
-        /* Responsive Mobile Layout */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+        }
+
+        .card { 
+            background: var(--card); 
+            padding: 30px; 
+            border-radius: 12px; 
+            text-align: center; 
+        }
+
+        /* MOBILE */
         @media (max-width: 900px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-text { max-width: 100%; }
             .form-container { width: 100%; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
+
 <body>
 
-    <nav>
-        <h2>MillieDev</h2>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#booking-section">Contact</a></li>
-        </ul>
-    </nav>
+<!-- NAVIGATION FIXED -->
+<nav>
+    <h2>MillieDev</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#booking-section">Contact</a></li>
+    </ul>
+</nav>
 
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h1>I Build Websites That <span>Convert</span></h1>
-            <p>Modern, fast, and responsive digital solutions for your business.</p>
-        </div>
-        <div id="booking-section" class="form-container">
-            <h3>Book a Service</h3>
-            <input id="name" placeholder="Your Name">
-            <input id="email" placeholder="Your Email">
-            <textarea id="message" placeholder="Project details..."></textarea>
-            <button onclick="sendBooking()" id="btn">Submit Booking</button>
-            <p id="response"></p>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <h1>I Build Websites That <span>Convert</span></h1>
+        <p>Modern, fast, and responsive digital solutions for your business.</p>
+    </div>
 
-    <section id="services" class="section">
-        <h2 style="text-align: center; margin-bottom: 40px;">My Premium Services</h2>
-        <div class="grid">
-            <div class="card"><h3>Web Design</h3><p>Professional layouts.</p></div>
-            <div class="card"><h3>E-Commerce</h3><p>Sell online globally.</p></div>
-            <div class="card"><h3>Custom Apps</h3><p>Scale your brand.</p></div>
-        </div>
-    </section>
+    <!-- BOOKING -->
+    <div id="booking-section" class="form-container">
+        <h3>Book a Service</h3>
+        <input id="name" placeholder="Your Name">
+        <input id="email" placeholder="Your Email">
+        <textarea id="message" placeholder="Project details..."></textarea>
+        <button onclick="sendBooking()" id="btn">Submit Booking</button>
+        <p id="response"></p>
+    </div>
+</section>
 
-    <footer style="text-align:center; padding:40px; opacity: 0.6;">
-        © 2026 Millie.Dav_Pro Portfolio System
-    </footer>
+<!-- SERVICES PREVIEW -->
+<section id="services" class="section">
+    <h2 style="text-align:center; margin-bottom:40px;">My Premium Services</h2>
 
-    <script>
-        async function sendBooking() {
-            const btn = document.getElementById("btn");
-            const resBox = document.getElementById("response");
-            const data = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                message: document.getElementById("message").value
-            };
-            btn.innerText = "Sending...";
-            try {
-                const res = await fetch("https://millie-dav.onrender.com/bookings", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data)
-                });
-                if (res.ok) resBox.innerText = "Sent successfully!";
-                else throw new Error();
-            } catch { resBox.innerText = "Error. Try again."; }
-            btn.innerText = "Submit Booking";
+    <div class="grid">
+        <div class="card"><h3>Web Design</h3><p>Professional layouts.</p></div>
+        <div class="card"><h3>E-Commerce</h3><p>Sell online globally.</p></div>
+        <div class="card"><h3>Custom Apps</h3><p>Scale your brand.</p></div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:40px; opacity:0.6;">
+    © 2026 MillieDev Portfolio System
+</footer>
+
+<!-- SCRIPT (UNCHANGED BUT CLEAN) -->
+<script>
+async function sendBooking() {
+    const btn = document.getElementById("btn");
+    const resBox = document.getElementById("response");
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    btn.innerText = "Sending...";
+
+    try {
+        const res = await fetch("https://millie-dav.onrender.com/bookings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+            resBox.innerText = "Sent successfully!";
+        } else {
+            resBox.innerText = "Failed to send.";
         }
-    </script>
+
+    } catch (err) {
+        resBox.innerText = "Error. Try again.";
+    }
+
+    btn.innerText = "Submit Booking";
+}
+</script>
+
 </body>
 </html>
