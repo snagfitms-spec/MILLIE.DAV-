@@ -39,36 +39,36 @@
     <h1>Book a Service</h1>
 
     <p style="text-align:center; opacity:0.7; max-width:650px; margin:15px auto;">
-        Choose a service and send your project details. I’ll respond with a solution plan and pricing.
+        Select a service below and I’ll automatically guide you to the booking form.
     </p>
 
 </section>
 
-<!-- ================= SERVICE OPTIONS ================= -->
+<!-- ================= SERVICE SELECTION ================= -->
 <section style="padding:40px 5%;">
 
-    <h2 style="margin-bottom:20px; color:var(--primary); text-align:center;">
-        Select a Service
+    <h2 style="text-align:center; margin-bottom:20px; color:var(--primary);">
+        Choose a Service
     </h2>
 
     <div class="grid">
 
-        <div class="card">
+        <div class="card" onclick="selectService('Web Design')">
             <h3>Web Design</h3>
             <p>Modern business websites</p>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="selectService('E-Commerce')">
             <h3>E-Commerce</h3>
-            <p>Online stores & payments</p>
+            <p>Online stores & payment systems</p>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="selectService('Landing Page')">
             <h3>Landing Page</h3>
-            <p>High conversion pages</p>
+            <p>High-conversion marketing pages</p>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="selectService('Custom System')">
             <h3>Custom System</h3>
             <p>Advanced web applications</p>
         </div>
@@ -77,8 +77,8 @@
 
 </section>
 
-<!-- ================= BOOKING FORM ================= -->
-<section style="padding:40px 5%;">
+<!-- ================= FORM ================= -->
+<section id="booking-form" style="padding:40px 5%;">
 
     <div class="card">
 
@@ -86,8 +86,11 @@
 
         <input type="text" placeholder="Your Name">
         <input type="email" placeholder="Your Email">
-        <input type="text" placeholder="Service You Want">
-        <textarea placeholder="Describe your project..."></textarea>
+
+        <!-- AUTO FILLED FIELD -->
+        <input type="text" id="serviceInput" placeholder="Selected Service">
+
+        <textarea placeholder="Describe your project in detail..."></textarea>
 
         <button>Submit Booking</button>
 
@@ -104,9 +107,10 @@
 
         <p>
             ✔ Clean modern design<br>
+            ✔ Mobile-first responsive systems<br>
             ✔ Fast delivery<br>
-            ✔ Mobile-first systems<br>
-            ✔ Business-focused results
+            ✔ Business-focused results<br>
+            ✔ Conversion-driven structure
         </p>
 
     </div>
@@ -118,7 +122,7 @@
     © 2026 MillieDev Portfolio System
 </footer>
 
-<!-- ================= MENU SCRIPT ================= -->
+<!-- ================= SCRIPTS ================= -->
 <script>
 
 function toggleMenu() {
@@ -133,6 +137,7 @@ window.addEventListener("load", () => {
     document.getElementById("menu").classList.remove("active");
 });
 
+/* CLOSE MENU ON OUTSIDE CLICK */
 document.addEventListener("click", function(e) {
 
     const menu = document.getElementById("menu");
@@ -143,8 +148,21 @@ document.addEventListener("click", function(e) {
     if (!menu.contains(e.target) && !btn.contains(e.target)) {
         menu.classList.remove("active");
     }
-
 });
+
+/* SERVICE CLICK LOGIC (THE IMPORTANT PART) */
+function selectService(serviceName) {
+
+    // fill form field
+    document.getElementById("serviceInput").value = serviceName;
+
+    // smooth scroll to form
+    document.getElementById("booking-form").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
 
 </script>
 
