@@ -1,62 +1,40 @@
-<script>
-  const API = "https://millie-dav.onrender.com/bookings";
+<section id="about" class="section">
+    <div class="about-wrapper">
+        
+        <div class="about-text">
+            <h3>ABOUT ME</h3>
+            <h1>MILLIEDEV DIGITAL SOLUTIONS</h1>
 
-  async function submitBooking(event) {
-    event.preventDefault();
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      service: document.getElementById("service").value,
-      message: document.getElementById("message").value
-    };
+            <p>
+                MillieDev is a digital development brand focused on creating fast, scalable, 
+                and visually engaging web experiences for individuals, startups, and 
+                businesses that want to stand out online.
+            </p>
 
-    try {
-      const res = await fetch(API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-      if (res.ok) {
-        alert("Booking successful!");
-        document.getElementById("bookingForm").reset();
-        loadBookings();
-      } else {
-        alert("Error sending booking.");
-      }
-    } catch (err) {
-      alert("Connection error!");
-    }
-  }
+            <p>
+                We design and build modern websites, booking systems, portfolios, and 
+                digital platforms that are optimized for performance, usability, and conversion.
+            </p>
 
-  async function loadBookings() {
-    const res = await fetch(API);
-    const data = await res.json();
-    const table = document.getElementById("data");
-    table.innerHTML = "";
-    data.forEach(item => {
-      table.innerHTML += `
-        <tr>
-          <td>${item.name}</td>
-          <td>${item.email}</td>
-          <td>${item.service}</td>
-          <td>${item.message}</td>
-          <td>${item.status || "pending"}</td>
-          <td><button onclick="deleteBooking('${item._id}')">Delete</button></td>
-        </tr>
-      `;
-    });
-  }
+            <div class="grid">
+                <div class="card">
+                    <h4>WHAT WE DO</h4>
+                    <p>Building modern websites, booking systems, and custom digital solutions.</p>
+                </div>
+                <div class="card">
+                    <h4>OUR APPROACH</h4>
+                    <p>Clean structure, mobile-first design, and performance-focused development.</p>
+                </div>
+                <div class="card">
+                    <h4>OUR GOAL</h4>
+                    <p>To create systems that are beautiful, functional, and conversion-driven.</p>
+                </div>
+            </div>
+        </div>
 
-  async function deleteBooking(id) {
-    if (localStorage.getItem("auth") !== "true") {
-  window.location.href = "login.html";
-      }
-    await fetch(`${API}/${id}`, { method: "DELETE" });
-    loadBookings();
-  }
+        <div class="about-image-container">
+            <img src="profile.png" class="about-image" alt="MillieDev Professional Profile">
+        </div>
 
-  loadBookings();
-</script>
-
-
-
+    </div>
+</section>
