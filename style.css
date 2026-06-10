@@ -344,4 +344,10 @@ a:hover {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
    }
+.menu-container {
+    display: none;
+}
 
+.menu-container.active {
+    display: block;
+}
