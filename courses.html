@@ -6,57 +6,162 @@
     <title>Courses | MillieDev</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="logo"><h2>MillieDev</h2></div>
+<!-- ================= NAVIGATION ================= -->
+<nav class="navbar">
 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="courses.html" class="active">Courses</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="booking.html">Book Now</a></li>
-        </ul>
-    </nav>
+    <div class="logo">MillieDev</div>
 
-    <!-- COURSES SECTION -->
-    <section class="container">
+    <div class="menu-btn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-        <!-- HEADER -->
-        <h1 style="text-align:center; margin-bottom: 20px;">
-            Courses
-        </h1>
+    <div class="menu-container" id="menu">
+        <a href="index.html" onclick="closeMenu()">Home</a>
+        <a href="services.html" onclick="closeMenu()">Services</a>
+        <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
+        <a href="courses.html" onclick="closeMenu()">Courses</a>
+        <a href="about.html" onclick="closeMenu()">About</a>
+        <a href="booking.html" onclick="closeMenu()">Booking</a>
+    </div>
 
-        <p style="text-align:center; margin-bottom: 40px; opacity:0.8;">
-            Learn web development, design, and digital skills step by step.
+</nav>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+
+    <div class="container">
+
+        <h1>Courses</h1>
+
+        <p style="
+            text-align:center;
+            opacity:0.7;
+            max-width:650px;
+            margin:15px auto;
+        ">
+            Learn web development, design, digital business, and practical online skills step by step.
         </p>
 
-        <!-- CARD FEED (FIXED SYSTEM) -->
-        <div class="grid">
+    </div>
 
-            <div class="card">
-                <h3>HTML & CSS Basics</h3>
-                <p>Master the building blocks of the web and learn how websites are structured and styled.</p>
-            </div>
+</section>
 
-            <div class="card">
-                <h3>JavaScript Fundamentals</h3>
-                <p>Learn how to make websites interactive with logic, functions, and dynamic behavior.</p>
-            </div>
+<!-- ================= COURSES SECTION ================= -->
+<section style="padding:40px 5%;">
 
-            <div class="card">
-                <h3>Full Stack Intro</h3>
-                <p>Understand frontend + backend systems and how real-world applications are built.</p>
-            </div>
+    <div class="grid">
 
+        <div class="card">
+            <h3>HTML & CSS Basics</h3>
+            <p>
+                Master the building blocks of the web and learn how websites are structured and styled.
+            </p>
         </div>
 
-    </section>
+        <div class="card">
+            <h3>JavaScript Fundamentals</h3>
+            <p>
+                Learn how to make websites interactive using functions, events, logic, and dynamic content.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Full Stack Introduction</h3>
+            <p>
+                Understand frontend and backend development and how complete applications are built.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Responsive Web Design</h3>
+            <p>
+                Learn how to build websites that work perfectly on phones, tablets, and desktops.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Website Deployment</h3>
+            <p>
+                Learn how to publish websites online using modern hosting platforms and domains.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Freelancing & Client Work</h3>
+            <p>
+                Learn how to find clients, manage projects, and earn income from your digital skills.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA SECTION ================= -->
+<section style="text-align:center; padding:70px 5%;">
+
+    <h2>Ready to start learning?</h2>
+
+    <p style="opacity:0.7; margin:20px 0;">
+        Build valuable digital skills and create opportunities for your future.
+    </p>
+
+    <a href="booking.html">
+        <button style="max-width:250px;">
+            Enroll Now
+        </button>
+    </a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer style="text-align:center; padding:40px; opacity:0.6;">
+    © 2026 MillieDev Portfolio System
+</footer>
+
+<!-- ================= MENU SCRIPT ================= -->
+<script>
+
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function closeMenu() {
+    document.getElementById("menu").classList.remove("active");
+}
+
+window.addEventListener("load", () => {
+    const menu = document.getElementById("menu");
+
+    if (menu) {
+        menu.classList.remove("active");
+    }
+});
+
+document.addEventListener("click", function(e) {
+
+    const menu = document.getElementById("menu");
+    const btn = document.querySelector(".menu-btn");
+
+    if (!menu || !btn) return;
+
+    if (
+        !menu.contains(e.target) &&
+        !btn.contains(e.target)
+    ) {
+        menu.classList.remove("active");
+    }
+
+});
+
+</script>
 
 </body>
 </html>
