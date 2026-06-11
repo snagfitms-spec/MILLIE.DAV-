@@ -1,204 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MillieDev Admin Dashboard</title>
-
-<style>
-
-/* ================= GLOBAL ================= */
-body {
-    margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #0a0f1f;
-    color: #fff;
-    display: flex;
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar {
-    width: 260px;
-    height: 100vh;
-    background: #0f1629;
-    padding: 25px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid rgba(255,255,255,0.05);
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #6C63FF;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-.nav a {
-    display: block;
-    padding: 12px;
-    margin-bottom: 8px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #aaa;
-    transition: 0.3s;
-}
-
-.nav a:hover {
-    background: rgba(108,99,255,0.15);
-    color: #fff;
-    transform: translateX(3px);
-}
-
-/* ================= MAIN ================= */
-.main {
-    margin-left: 260px;
-    width: calc(100% - 260px);
-}
-
-/* ================= TOPBAR ================= */
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 25px;
-    background: #0f1629;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.topbar h2 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.search {
-    padding: 10px;
-    width: 260px;
-    border-radius: 10px;
-    border: none;
-    background: #111a2e;
-    color: #fff;
-    outline: none;
-}
-
-/* ================= STATS ================= */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    padding: 25px;
-}
-
-.stat {
-    background: linear-gradient(145deg, #111a2e, #0f1629);
-    padding: 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.3s;
-}
-
-.stat:hover {
-    transform: translateY(-3px);
-}
-
-.stat h3 {
-    margin: 0;
-    font-size: 22px;
-    color: #6C63FF;
-}
-
-/* ================= GRID ================= */
-.grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 18px;
-    padding: 0 25px 25px;
-}
-
-/* ================= PANELS ================= */
-.panel {
-    background: linear-gradient(145deg, #111a2e, #0f1629);
-    padding: 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ================= BOOKING CARD (PREMIUM INBOX STYLE) ================= */
-.booking {
-    background: #0e1527;
-    padding: 14px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    border-left: 3px solid #6C63FF;
-    transition: 0.3s;
-}
-
-.booking:hover {
-    transform: scale(1.01);
-    background: #101a31;
-}
-
-.booking-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.name {
-    font-weight: bold;
-}
-
-.email {
-    font-size: 12px;
-    color: #aaa;
-}
-
-.service {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    background: rgba(108,99,255,0.2);
-    color: #6C63FF;
-}
-
-.message {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #ccc;
-    line-height: 1.4;
-}
-
-/* ================= BUTTON ================= */
-.btn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 8px;
-    background: #ef4444;
-    color: white;
-    cursor: pointer;
-    font-size: 12px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #ff2d2d;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MillieDev Admin Dashboard</title>
 </head>
-
 <body>
 
-<!-- ================= SIDEBAR ================= -->
+<!-- Hamburger Menu Button -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- Sidebar -->
 <div class="sidebar">
-
     <div class="logo">MillieDev</div>
-
     <div class="nav">
         <a href="#">Dashboard</a>
         <a href="#">Bookings</a>
@@ -207,64 +21,47 @@ body {
         <a href="#">Analytics</a>
         <a href="#">Settings</a>
     </div>
-
 </div>
 
-<!-- ================= MAIN ================= -->
+<!-- Main Content -->
 <div class="main">
 
-    <!-- TOPBAR -->
+    <!-- Topbar -->
     <div class="topbar">
         <h2>Dashboard Overview</h2>
         <input class="search" placeholder="Search bookings...">
     </div>
 
-    <!-- STATS -->
+    <!-- Stats -->
     <div class="stats">
-
-        <div class="stat">
-            <h3>156</h3>
-            <p>Total Bookings</p>
-        </div>
-
-        <div class="stat">
-            <h3>28</h3>
-            <p>New This Week</p>
-        </div>
-
-        <div class="stat">
-            <h3>102</h3>
-            <p>Clients</p>
-        </div>
-
-        <div class="stat">
-            <h3>68%</h3>
-            <p>Conversion Rate</p>
-        </div>
-
+        <div class="stat"><h3>156</h3><p>Total Bookings</p></div>
+        <div class="stat"><h3>28</h3><p>New This Week</p></div>
+        <div class="stat"><h3>102</h3><p>Clients</p></div>
+        <div class="stat"><h3>68%</h3><p>Conversion Rate</p></div>
     </div>
 
-    <!-- GRID -->
+    <!-- Grid -->
     <div class="grid">
-
-        <!-- BOOKINGS -->
         <div class="panel">
             <h3>Recent Bookings</h3>
             <div id="cards"></div>
         </div>
-
-        <!-- SIDE -->
         <div class="panel">
             <h3>Analytics</h3>
             <p style="opacity:0.6;">Charts coming soon</p>
-
             <h3 style="margin-top:20px;">Top Services</h3>
             <p style="opacity:0.6;">Breakdown coming soon</p>
         </div>
-
     </div>
-
 </div>
+
+<!-- JavaScript for Mobile Menu -->
+<script>
+    function toggleMenu() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('active');
+    }
+</script>
 
 </body>
 </html>
