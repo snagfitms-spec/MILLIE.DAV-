@@ -4,23 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking | MillieDev</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
 <nav class="navbar">
-
     <div class="logo">MillieDev</div>
-
     <div class="menu-btn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
-
     <div class="menu-container" id="menu">
         <a href="index.html" onclick="closeMenu()">Home</a>
         <a href="services.html" onclick="closeMenu()">Services</a>
@@ -29,175 +22,81 @@
         <a href="about.html" onclick="closeMenu()">About</a>
         <a href="booking.html" onclick="closeMenu()">Booking</a>
     </div>
-
 </nav>
 
-<!-- ================= HERO ================= -->
 <section class="hero">
-
     <h1>Book a Service</h1>
-
     <p style="text-align:center; opacity:0.7; max-width:650px; margin:15px auto;">
         Fill in the form below and I’ll get back to you as soon as possible.
     </p>
-
 </section>
 
-<!-- ================= SERVICE OPTIONS ================= -->
 <section style="padding:40px 5%;">
-
-    <h2 style="text-align:center; margin-bottom:20px; color:var(--primary);">
-        Choose a Service
-    </h2>
-
+    <h2 style="text-align:center; margin-bottom:20px; color:var(--primary);">Choose a Service</h2>
     <div class="grid">
-
-        <div class="card" onclick="selectService('Web Design')">
-            <h3>Web Design</h3>
-            <p>Modern business websites</p>
-        </div>
-
-        <div class="card" onclick="selectService('E-Commerce')">
-            <h3>E-Commerce</h3>
-            <p>Online stores & payment systems</p>
-        </div>
-
-        <div class="card" onclick="selectService('Landing Page')">
-            <h3>Landing Page</h3>
-            <p>High-conversion marketing pages</p>
-        </div>
-
-        <div class="card" onclick="selectService('Custom System')">
-            <h3>Custom System</h3>
-            <p>Advanced web applications</p>
-        </div>
-
+        <div class="card" onclick="selectService('Web Design')"><h3>Web Design</h3><p>Modern business websites</p></div>
+        <div class="card" onclick="selectService('E-Commerce')"><h3>E-Commerce</h3><p>Online stores & payment systems</p></div>
+        <div class="card" onclick="selectService('Landing Page')"><h3>Landing Page</h3><p>High-conversion marketing pages</p></div>
+        <div class="card" onclick="selectService('Custom System')"><h3>Custom System</h3><p>Advanced web applications</p></div>
     </div>
-
 </section>
 
-<!-- ================= BOOKING FORM ================= -->
 <section style="padding:40px 5%;">
-
     <div class="card">
-
         <h3>Send Your Request</h3>
-
         <form id="bookingForm">
-
             <input type="text" id="name" placeholder="Your Name" required>
-
             <input type="email" id="email" placeholder="Your Email" required>
-
             <input type="text" id="service" placeholder="Selected Service" required>
-
             <textarea id="message" placeholder="Describe your project in detail..." required></textarea>
-
             <button type="submit">Submit Booking</button>
-
         </form>
-
         <p id="msg" style="margin-top:10px;"></p>
-
     </div>
-
 </section>
 
-<!-- ================= WHY SECTION ================= -->
-<section style="padding:40px 5%;">
+<footer style="text-align:center; padding:40px; opacity:0.6;">© 2026 MillieDev Portfolio System</footer>
 
-    <div class="card">
-
-        <h3>Why Work With Me?</h3>
-
-        <p>
-            ✔ Clean modern design<br>
-            ✔ Mobile-first responsive systems<br>
-            ✔ Fast delivery<br>
-            ✔ Business-focused results<br>
-            ✔ Conversion-driven structure
-        </p>
-
-    </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer style="text-align:center; padding:40px; opacity:0.6;">
-    © 2026 MillieDev Portfolio System
-</footer>
-
-<!-- ================= SCRIPT ================= -->
 <script>
+function toggleMenu() { document.getElementById("menu").classList.toggle("active"); }
+function closeMenu() { document.getElementById("menu").classList.remove("active"); }
 
-/* MENU */
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
-}
-
-function closeMenu() {
-    document.getElementById("menu").classList.remove("active");
-}
-
-/* CLOSE ON LOAD */
-window.addEventListener("load", () => {
-    document.getElementById("menu").classList.remove("active");
-});
-
-/* CLOSE OUTSIDE CLICK */
-document.addEventListener("click", function(e) {
-    const menu = document.getElementById("menu");
-    const btn = document.querySelector(".menu-btn");
-
-    if (!menu.contains(e.target) && !btn.contains(e.target)) {
-        menu.classList.remove("active");
-    }
-});
-
-/* SERVICE AUTO FILL */
 function selectService(service) {
     document.getElementById("service").value = service;
-
-    document.getElementById("bookingForm").scrollIntoView({
-        behavior: "smooth"
-    });
+    document.getElementById("bookingForm").scrollIntoView({ behavior: "smooth" });
 }
 
-/* FORM SUBMIT → BACKEND CONNECTION */
 document.getElementById("bookingForm").addEventListener("submit", async function(e) {
     e.preventDefault();
+
+    const msg = document.getElementById("msg");
+    msg.innerText = "Sending...";
+    msg.style.color = "#3b82f6";
 
     const data = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
+        service: document.getElementById("service").value,
         message: document.getElementById("message").value
     };
 
-    const msg = document.getElementById("msg");
-
     try {
-        const res = await fetch("http://localhost:5000/bookings", {
+        const res = await fetch("https://millie-dav.onrender.com/bookings", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         });
 
-        const result = await res.json();
+        if (!res.ok) throw new Error("Server error");
 
         msg.innerText = "Booking sent successfully!";
-        msg.style.color = "#3b82f6";
-
+        msg.style.color = "#10b981";
         this.reset();
-
     } catch (error) {
-        msg.innerText = "Error sending booking.";
+        msg.innerText = "Error sending booking. Please try again.";
         msg.style.color = "#ef4444";
-        console.log(error);
     }
 });
-
 </script>
 
 </body>
