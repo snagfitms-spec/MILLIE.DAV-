@@ -7,15 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
 
         // =========================
-        // 1. COLLECT DATA
+        // 1. COLLECT DATA (SAFE MODE)
         // =========================
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const service = document.getElementById("service").value.trim();
-        const message = document.getElementById("message").value.trim();
+        const name = document.getElementById("name")?.value?.trim();
+        const email = document.getElementById("email")?.value?.trim();
+        const message = document.getElementById("message")?.value?.trim();
+
+        // 🔥 FIXED SERVICE LOGIC (NO MORE undefined / General BUG)
+        const service = (
+            document.getElementById("service")?.value ||
+            document.getElementById("serviceInput")?.value ||
+            ""
+        ).trim();
 
         // =========================
-        // 2. VALIDATION
+        // 2. VALIDATION (STRICT)
         // =========================
         if (!name || !email || !message) {
             msg.innerText = "Please fill in all required fields.";
@@ -23,20 +29,24 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        if (!service) {
+            msg.innerText = "Please select a service.";
+            msg.style.color = "red";
+            return;
+        }
+
         // =========================
         // 3. OPTIMISTIC UI (INSTANT FEEDBACK)
         // =========================
-
         msg.innerText = "Sending booking...";
         msg.style.color = "#fbbf24";
 
-        // disable form button (optional but professional)
         const button = form.querySelector("button");
         button.disabled = true;
         button.innerText = "Sending...";
 
         // =========================
-        // 4. SEND TO BACKEND (BACKGROUND)
+        // 4. SEND TO BACKEND
         // =========================
         try {
             const response = await fetch("https://millie-dav.onrender.com/bookings", {
@@ -55,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
 
             // =========================
-            // 5. SUCCESS UI (INSTANT FEEL)
+            // 5. SUCCESS STATE
             // =========================
             if (data.success) {
 
@@ -63,6 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 msg.style.color = "lightgreen";
 
                 form.reset();
+
+                // clear service display too (important fix)
+                const serviceDisplay = document.getElementById("serviceInput");
+                if (serviceDisplay) serviceDisplay.value = "";
+
+                const hiddenService = document.getElementById("service");
+                if (hiddenService) hiddenService.value = "";
 
             } else {
                 msg.innerText = "Failed to submit booking.";
@@ -79,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // =========================
-        // 6. RESET BUTTON STATE
+        // 6. RESET BUTTON
         // =========================
         button.disabled = false;
         button.innerText = "Submit Booking";
