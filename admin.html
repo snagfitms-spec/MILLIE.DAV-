@@ -1,40 +1,155 @@
-<section id="about" class="section">
-    <div class="about-wrapper">
-        
-        <div class="about-text">
-            <h3>ABOUT ME</h3>
-            <h1>MILLIEDEV DIGITAL SOLUTIONS</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <p>
-                MillieDev is a digital development brand focused on creating fast, scalable, 
-                and visually engaging web experiences for individuals, startups, and 
-                businesses that want to stand out online.
-            </p>
+<title>Admin Dashboard</title>
 
-            <p>
-                We design and build modern websites, booking systems, portfolios, and 
-                digital platforms that are optimized for performance, usability, and conversion.
-            </p>
+<style>
 
-            <div class="grid">
-                <div class="card">
-                    <h4>WHAT WE DO</h4>
-                    <p>Building modern websites, booking systems, and custom digital solutions.</p>
+body{
+    font-family:Arial,sans-serif;
+    background:#070A12;
+    color:white;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+}
+
+.booking{
+    background:#11182a;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+button{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.logout{
+    background:#6C63FF;
+    margin-bottom:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+<div id="bookings">
+Loading bookings...
+</div>
+
+<script>
+
+const token = localStorage.getItem("token");
+
+if(!token){
+    window.location.href = "login.html";
+}
+
+async function loadBookings(){
+
+    try{
+
+        const res = await fetch(
+            "https://millie-dav.onrender.com/bookings",
+            {
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            }
+        );
+
+        const bookings = await res.json();
+
+        const container = document.getElementById("bookings");
+
+        if(bookings.length === 0){
+            container.innerHTML = "<p>No bookings found.</p>";
+            return;
+        }
+
+        container.innerHTML = "";
+
+        bookings.forEach(booking => {
+
+            container.innerHTML += `
+                <div class="booking">
+
+                    <h3>${booking.name}</h3>
+
+                    <p><strong>Email:</strong>
+                    ${booking.email}</p>
+
+                    <p><strong>Service:</strong>
+                    ${booking.service}</p>
+
+                    <p><strong>Message:</strong>
+                    ${booking.message}</p>
+
+                    <button onclick="deleteBooking('${booking._id}')">
+                        Delete
+                    </button>
+
                 </div>
-                <div class="card">
-                    <h4>OUR APPROACH</h4>
-                    <p>Clean structure, mobile-first design, and performance-focused development.</p>
-                </div>
-                <div class="card">
-                    <h4>OUR GOAL</h4>
-                    <p>To create systems that are beautiful, functional, and conversion-driven.</p>
-                </div>
-            </div>
-        </div>
+            `;
 
-        <div class="about-image-container">
-            <img src="profile.png" class="about-image" alt="MillieDev Professional Profile">
-        </div>
+        });
 
-    </div>
-</section>
+    }catch(err){
+
+        document.getElementById("bookings").innerHTML =
+        "Failed to load bookings.";
+
+    }
+}
+
+async function deleteBooking(id){
+
+    if(!confirm("Delete booking?")){
+        return;
+    }
+
+    await fetch(
+        `https://millie-dav.onrender.com/bookings/${id}`,
+        {
+            method:"DELETE",
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        }
+    );
+
+    loadBookings();
+}
+
+function logout(){
+
+    localStorage.removeItem("token");
+
+    window.location.href="login.html";
+
+}
+
+loadBookings();
+
+</script>
+
+</body>
+</html>
