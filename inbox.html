@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MillieDev Inbox</title>
+    <title>MillieDev - Live Bookings</title>
+    <!-- vConsole for debugging -->
     <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
     <script>var vConsole = new VConsole();</script>
     <style>
-        body { background: #070A12; color: #fff; font-family: sans-serif; margin: 0; }
-        .thread-item { padding: 20px; border-bottom: 1px solid #1E293B; }
-        .thread-item h4 { margin: 0; }
-        .thread-item p { color: #94A3B8; font-size: 0.9rem; margin: 5px 0 0; }
+        body { background: #0f172a; color: white; font-family: sans-serif; padding: 20px; }
+        .message-card { background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #60a5fa; }
+        .sender { font-weight: bold; color: #60a5fa; font-size: 1.1em; }
     </style>
 </head>
 <body>
-    <div id="thread-list">
-        <div class="thread-item">
-            <h4>Loading your emails...</h4>
-        </div>
+    <h2>Live Bookings Inbox</h2>
+    <div id="inbox-container">
+        <p>Waiting for new bookings...</p>
     </div>
+
+    <!-- Connects to your Render server socket -->
+    <script src="https://millie-dav.onrender.com/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io("https://millie-dav.onrender.com");
+        const container = document.getElementById('inbox-container');
+
+        socket.on('newBooking', (data) => {
+            console.log("New booking arrived:", data);
+            const card = document.createElement('div');
+            card.className = 'message-card';
+            card.innerHTML = `
+                <div class="sender">${data.name}</div>
+                <p><strong>Service:</strong> ${data.service}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Project:</strong> ${data.description}</p>
+            `;
+            container.prepend(card);
+        });
+    </script>
 </body>
 </html>
-
-<script>
-    alert("The Inbox page is working!");
-    console.log("If you see this, the page loaded correctly.");
-</script>
-
