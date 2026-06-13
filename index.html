@@ -14,7 +14,7 @@
 
 <body>
 
-<!-- ================= NAVBAR (UNCHANGED - SAFE) ================= -->
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
 
 <div class="logo">MillieDev</div>
@@ -30,14 +30,16 @@
 <a href="index.html" onclick="closeMenu()">Home</a>
 <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
 <a href="pricing.html" onclick="closeMenu()">Pricing</a>
-<a href="booking.html" onclick="closeMenu()">Booking</a>
+<a href="courses.html" onclick="closeMenu()">Courses</a>
+<a href="services.html" onclick="closeMenu()">Services</a>
 <a href="about.html" onclick="closeMenu()">About</a>
+<a href="booking.html" onclick="closeMenu()">Booking</a>
 
 </div>
 
 </nav>
 
-<!-- ================= HERO (UNCHANGED FLOW SAFE) ================= -->
+<!-- ================= HERO ================= -->
 <section class="hero" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:80px 5%; gap:40px;">
 
 <div style="flex:1; min-width:280px;">
@@ -50,15 +52,27 @@ Building Digital Systems That Scale Your Business
 Modern websites, SaaS tools, and automation systems designed to convert users into customers.
 </p>
 
-<!-- SAFE CTA FLOW -->
+<!-- CTA BUTTONS -->
 <a href="booking.html">
 <button style="margin-right:10px;">Book Service</button>
 </a>
 
 <a href="portfolio.html">
-<button style="margin-right:10px; background:transparent; border:1px solid var(--border);">
+
+<!-- ONLY THIS BUTTON IS CHANGED -->
+<button style="
+background: transparent;
+border: 1px solid var(--border);
+color: var(--text);
+font-weight: 600;
+opacity: 0.85;
+letter-spacing: 0.3px;
+">
+
 View Work
+
 </button>
+
 </a>
 
 <a href="pricing.html">
@@ -69,96 +83,61 @@ View Pricing
 
 </div>
 
+<!-- IMAGE SECTION (UNCHANGED FLOAT SYSTEM PRESERVED) -->
 <div style="flex:1; min-width:280px;">
+
+<div class="hero-image-wrapper">
+<div class="hero-image-float">
+
 <img src="https://raw.githubusercontent.com/snagfitms-spec/Millie-Dev/main/file_00000000bf8c7243b4a450556ba07032.png"
-alt="MillieDev"
+alt="MillieDev Services Overview"
 style="width:100%; border-radius:16px; border:1px solid var(--border);">
+
+</div>
+</div>
+
 </div>
 
 </section>
 
-<!-- ================= LEVEL 8 REALISTIC STATS UPGRADE ================= -->
+<!-- ================= STATS ================= -->
 <section style="padding:20px 5%;">
 
 <div class="grid">
 
-<!-- CARD 1 -->
 <div class="card">
-
-<div class="icon blue">💻</div>
-
+<div style="font-size:1.4rem;">💻</div>
 <h3>50+</h3>
 <p>Projects Completed</p>
-
-<div style="margin-top:8px; color:var(--muted); font-size:0.85rem;">
-Delivered websites, APIs & business systems
+<div style="opacity:0.7; font-size:0.85rem;">Real-world systems delivered</div>
 </div>
 
-<div style="margin-top:10px; font-size:0.8rem; opacity:0.7;">
-⭐ Consistent production-level quality
-</div>
-
-</div>
-
-<!-- CARD 2 -->
 <div class="card">
-
-<div class="icon green">👥</div>
-
+<div style="font-size:1.4rem;">👥</div>
 <h3>30+</h3>
 <p>Happy Clients</p>
-
-<div style="margin-top:8px; color:var(--muted); font-size:0.85rem;">
-Startups, brands & small businesses
+<div style="opacity:0.7; font-size:0.85rem;">Business & startup partnerships</div>
 </div>
 
-<div style="margin-top:10px; font-size:0.8rem; opacity:0.7;">
-Long-term working relationships
-</div>
-
-</div>
-
-<!-- CARD 3 -->
 <div class="card">
-
-<div class="icon orange">🚀</div>
-
+<div style="font-size:1.4rem;">🚀</div>
 <h3>3+ Years</h3>
 <p>Experience</p>
-
-<div style="margin-top:8px; color:var(--muted); font-size:0.85rem;">
-Frontend + backend development experience
+<div style="opacity:0.7; font-size:0.85rem;">Production development work</div>
 </div>
 
-<div style="margin-top:10px; font-size:0.8rem; opacity:0.7;">
-Real-world system building exposure
-</div>
-
-</div>
-
-<!-- CARD 4 -->
 <div class="card">
-
-<div class="icon pink">⭐</div>
-
+<div style="font-size:1.4rem;">⭐</div>
 <h3>100%</h3>
 <p>Client Satisfaction</p>
-
-<div style="margin-top:8px; color:var(--muted); font-size:0.85rem;">
-Feedback-driven delivery system
-</div>
-
-<div style="margin-top:10px; font-size:0.8rem; opacity:0.7;">
-No incomplete project delivery
-</div>
-
+<div style="opacity:0.7; font-size:0.85rem;">Consistent delivery quality</div>
 </div>
 
 </div>
 
 </section>
 
-<!-- ================= SERVICES (UNCHANGED SAFE) ================= -->
+<!-- ================= SERVICES ================= -->
 <section style="padding:60px 5%;">
 
 <h2 style="text-align:center; margin-bottom:30px;">Services</h2>
@@ -189,7 +168,7 @@ No incomplete project delivery
 
 </section>
 
-<!-- ================= CTA SECTION ================= -->
+<!-- ================= CTA ================= -->
 <section style="text-align:center; padding:80px 5%;">
 
 <h2>Ready to Build Something Powerful?</h2>
@@ -213,7 +192,7 @@ Explore pricing or book a service to get started instantly.
 © 2026 MillieDev SaaS System
 </footer>
 
-<!-- ================= SCRIPT (UNCHANGED SAFE) ================= -->
+<!-- ================= SCRIPT ================= -->
 <script>
 
 function toggleMenu(){
@@ -231,4 +210,4 @@ document.getElementById("menu").classList.remove("active");
 </script>
 
 </body>
-    </html>
+</html>
