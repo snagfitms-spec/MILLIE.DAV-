@@ -1,17 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | MillieDev</title>
+    <title>Home | MillieDev</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- LEVEL 7 ANIMATION LAYER -->
+    <style>
+        body {
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* HERO UPGRADE */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 90px 5%;
+            gap: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero p {
+            opacity: 0.75;
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* FLOAT IMAGE (LEVEL 7 SIGNATURE EFFECT) */
+        .hero-img {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* SCROLL REVEAL */
+        .card {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease;
+        }
+
+        .card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA BUTTON GLOW */
+        button {
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(56,189,248,0.3);
+        }
+
+        /* GRID POLISH */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px 5%;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR (SAFE - DO NOT CHANGE LOGIC) ================= -->
 <nav class="navbar">
 
     <div class="logo">MillieDev</div>
@@ -25,91 +115,115 @@
     <div class="menu-container" id="menu">
         <a href="index.html" onclick="closeMenu()">Home</a>
         <a href="services.html" onclick="closeMenu()">Services</a>
-        <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
         <a href="courses.html" onclick="closeMenu()">Courses</a>
+        <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
         <a href="about.html" onclick="closeMenu()">About</a>
         <a href="booking.html" onclick="closeMenu()">Booking</a>
     </div>
 
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- ================= HERO SECTION ================= -->
 <section class="hero">
 
-    <h1>About MillieDev</h1>
+    <div style="flex:1; min-width:280px;">
 
-    <p style="opacity:0.7; max-width:650px; margin:15px auto;">
-        We design and build modern digital systems that help businesses grow, scale, and convert users into customers.
+        <h1>
+            Building Digital Solutions That Drive Real Results
+        </h1>
+
+        <p style="max-width:520px; margin:15px 0;">
+            Modern websites, powerful systems, and digital experiences designed to grow your business and convert visitors into clients.
+        </p>
+
+        <div style="margin-top:20px;">
+            <a href="booking.html">
+                <button style="padding:12px 20px; margin-right:10px;">Book a Service</button>
+            </a>
+
+            <a href="portfolio.html">
+                <button style="padding:12px 20px; background:transparent; border:1px solid var(--border);">
+                    View Work
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+    <div style="flex:1; min-width:280px; text-align:center;">
+
+        <img class="hero-img"
+             src="https://cdn.jsdelivr.net/gh/snagfitms-spec/Millie-Dev@main/image-22.jpg"
+             alt="MillieDev Services Overview">
+
+    </div>
+
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="grid">
+
+    <div class="card"><h3>50+</h3><p>Projects Completed</p></div>
+    <div class="card"><h3>30+</h3><p>Happy Clients</p></div>
+    <div class="card"><h3>3+ Years</h3><p>Experience</p></div>
+    <div class="card"><h3>100%</h3><p>Client Satisfaction</p></div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section style="padding:60px 5%;">
+
+    <h2 style="text-align:center; margin-bottom:30px;">Services I Offer</h2>
+
+    <div class="grid">
+
+        <div class="card"><h3>Web Design</h3><p>Clean modern responsive websites.</p></div>
+        <div class="card"><h3>E-Commerce</h3><p>Online stores with payment systems.</p></div>
+        <div class="card"><h3>Custom Systems</h3><p>Full business software solutions.</p></div>
+        <div class="card"><h3>Tech Courses</h3><p>Learn to build digital products.</p></div>
+
+    </div>
+
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section style="padding:60px 5%;">
+
+    <h2 style="text-align:center; margin-bottom:30px;">Featured Projects</h2>
+
+    <div class="grid">
+
+        <div class="card"><h3>Booking System</h3><p>Full backend-powered booking platform.</p></div>
+        <div class="card"><h3>Business Website</h3><p>High conversion landing site.</p></div>
+        <div class="card"><h3>E-Commerce Store</h3><p>Modern online shop system.</p></div>
+
+    </div>
+
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section style="text-align:center; padding:80px 5%;">
+
+    <h2>Let’s Build Something Amazing</h2>
+
+    <p style="opacity:0.7; margin:20px 0;">
+        Have a project in mind? Let’s bring it to life.
     </p>
 
-</section>
-
-<!-- ================= ABOUT CARDS ================= -->
-<section class="section">
-
-    <div class="grid">
-
-        <!-- CARD 1 -->
-        <div class="card">
-            <h3>What We Do</h3>
-            <p>
-                We build websites, booking systems, e-commerce stores, and custom digital platforms designed for performance.
-            </p>
-            <a href="services.html">Explore Services</a>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="card">
-            <h3>Our Approach</h3>
-            <p>
-                We focus on clean architecture, mobile-first design, and scalable systems that grow with your business.
-            </p>
-            <a href="services.html#approach">View Approach</a>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="card">
-            <h3>Our Goal</h3>
-            <p>
-                To turn ideas into powerful digital products that deliver real-world results and conversions.
-            </p>
-            <a href="services.html#goal">See Goal</a>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= EXTRA SECTION ================= -->
-<section class="section">
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Vision</h3>
-            <p>We build systems, not just websites.</p>
-        </div>
-
-        <div class="card">
-            <h3>Performance</h3>
-            <p>Fast, responsive, mobile-first digital experiences.</p>
-        </div>
-
-        <div class="card">
-            <h3>Reliability</h3>
-            <p>Stable systems that work in real business environments.</p>
-        </div>
-
-    </div>
+    <a href="booking.html">
+        <button style="padding:14px 25px; max-width:250px;">
+            Book a Service Now
+        </button>
+    </a>
 
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer style="text-align:center; padding:40px; opacity:0.6;">
-    © 2026 MillieDev Digital System
+    © 2026 MillieDev. All rights reserved.
 </footer>
 
-<!-- ================= MENU SCRIPT ================= -->
+<!-- ================= SAFE MENU + SCROLL ANIMATION ================= -->
 <script>
 
 function toggleMenu() {
@@ -120,7 +234,24 @@ function closeMenu() {
     document.getElementById("menu").classList.remove("active");
 }
 
+/* LEVEL 7 SCROLL REVEAL */
+window.addEventListener("load", () => {
+
+    const cards = document.querySelectorAll(".card");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal");
+            }
+        });
+    }, { threshold: 0.15 });
+
+    cards.forEach(card => observer.observe(card));
+
+});
+
 </script>
 
 </body>
-</html>
+                                      </html>
