@@ -10,7 +10,7 @@
 
 <style>
 
-/* ================= LEVEL 12 LESSON ENGINE ================= */
+/* ================= LEVEL 12 LESSON ENGINE V2 ================= */
 
 .lesson-container{
     max-width: 900px;
@@ -30,7 +30,6 @@
     margin-bottom: 25px;
 }
 
-/* CONTENT BOX */
 .lesson-box{
     background: var(--panel);
     padding: 25px;
@@ -88,7 +87,7 @@
     font-weight: 600;
 }
 
-/* PROGRESS BAR */
+/* PROGRESS */
 .progress-bar{
     height: 8px;
     background: rgba(255,255,255,0.1);
@@ -114,9 +113,9 @@
     <div class="logo">MillieDev</div>
 </nav>
 
-<!-- PROGRESS -->
 <div class="lesson-container">
 
+    <!-- PROGRESS -->
     <div class="progress-bar">
         <div class="progress-fill" id="progress"></div>
     </div>
@@ -146,7 +145,7 @@
 
 <script>
 
-/* ================= STATE ================= */
+/* ================= SAFE STATE ================= */
 
 const params = new URLSearchParams(window.location.search);
 
@@ -154,20 +153,45 @@ const courseId = params.get("course");
 const moduleId = params.get("module");
 const lessonId = params.get("lesson");
 
-let course, module, lessonIndex;
+let course = null;
+let module = null;
+let lessonIndex = -1;
 
 /* ================= INIT ================= */
 
 window.onload = () => {
 
-    course = courses[courseId];
-    module = course.modules.find(m => m.id === moduleId);
+    course = courses?.[courseId];
 
-    lessonIndex = module.lessons.findIndex(l => l.id === lessonId);
+    if(!course){
+        showError("Course not found");
+        return;
+    }
+
+    module = course.modules?.find(m => m.id === moduleId);
+
+    if(!module){
+        showError("Module not found");
+        return;
+    }
+
+    lessonIndex = module.lessons?.findIndex(l => l.id === lessonId);
+
+    if(lessonIndex === -1){
+        showError("Lesson not found");
+        return;
+    }
 
     loadLesson();
     updateProgress();
 };
+
+/* ================= ERROR HANDLER ================= */
+
+function showError(msg){
+    document.getElementById("title").innerText = msg;
+    document.getElementById("content").innerHTML = "Please go back and select a valid lesson.";
+}
 
 /* ================= LOAD LESSON ================= */
 
@@ -177,17 +201,17 @@ function loadLesson(){
 
     document.getElementById("title").innerText = lesson.title;
     document.getElementById("meta").innerText =
-        course.title + " → " + module.title;
+        `${course.title} → ${module.title}`;
 
     document.getElementById("content").innerHTML =
-        lesson.content?.text || "Lesson content loading...";
+        lesson.content?.text || "No content available.";
 
-    loadQuiz(lesson);
+    renderQuiz(lesson);
 }
 
-/* ================= QUIZ SYSTEM ================= */
+/* ================= QUIZ ENGINE V2 ================= */
 
-function loadQuiz(lesson){
+function renderQuiz(lesson){
 
     const quizBox = document.getElementById("quizBox");
     const quiz = document.getElementById("quiz");
@@ -201,60 +225,59 @@ function loadQuiz(lesson){
 
     quizBox.style.display = "block";
 
-    lesson.quiz.forEach((q, index) => {
+    const q = lesson.quiz;
 
-        const div = document.createElement("div");
-        div.innerText = q.question;
-        div.style.marginBottom = "10px";
+    const question = document.createElement("div");
+    question.innerHTML = `<strong>${q.question}</strong>`;
+    quiz.appendChild(question);
 
-        quiz.appendChild(div);
+    q.options.forEach(opt => {
 
-        q.options.forEach(opt => {
+        const btn = document.createElement("div");
+        btn.className = "quiz-option";
+        btn.innerText = opt;
 
-            const btn = document.createElement("div");
-            btn.className = "quiz-option";
-            btn.innerText = opt;
+        btn.onclick = () => {
 
-            btn.onclick = () => {
+            if(opt === q.answer){
+                btn.classList.add("correct");
+                markComplete();
+            } else {
+                btn.classList.add("wrong");
+            }
+        };
 
-                if(opt === q.answer){
-                    btn.classList.add("correct");
-                    saveProgress(true);
-                } else {
-                    btn.classList.add("wrong");
-                }
-            };
-
-            quiz.appendChild(btn);
-        });
+        quiz.appendChild(btn);
     });
 }
 
-/* ================= PROGRESS SYSTEM ================= */
+/* ================= PROGRESS ENGINE ================= */
 
 function updateProgress(){
 
-    let key = courseId + "-" + moduleId + "-" + lessonId;
+    const key = getKey();
 
-    let progress = localStorage.getItem("progress-" + key);
+    const done = localStorage.getItem(key);
 
-    if(progress){
+    if(done === "completed"){
         document.getElementById("progress").style.width = "100%";
+    } else {
+        document.getElementById("progress").style.width = "20%";
     }
 }
 
-/* save completion */
-function saveProgress(done){
+function markComplete(){
 
-    if(done){
-        let key = courseId + "-" + moduleId + "-" + lessonId;
-        localStorage.setItem("progress-" + key, "completed");
+    const key = getKey();
 
-        document.getElementById("progress").style.width = "100%";
+    if(localStorage.getItem(key) !== "completed"){
+        localStorage.setItem(key, "completed");
     }
+
+    document.getElementById("progress").style.width = "100%";
 }
 
-/* ================= NAV ================= */
+/* ================= NAV ENGINE ================= */
 
 function nextLesson(){
 
@@ -278,6 +301,12 @@ function redirect(){
 
     window.location.href =
         `lesson.html?course=${courseId}&module=${moduleId}&lesson=${l.id}`;
+}
+
+/* ================= HELPERS ================= */
+
+function getKey(){
+    return `${courseId}-${moduleId}-${lessonId}`;
 }
 
 </script>
