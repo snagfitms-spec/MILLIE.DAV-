@@ -1,128 +1,203 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Portfolio | MillieDev</title><link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json"></head>
-<body><!-- NAVIGATION --><nav class="navbar"><div class="logo">MillieDev</div><div class="menu-btn" onclick="toggleMenu()">
-<span></span>
-<span></span>
-<span></span>
-</div><div class="menu-container" id="menu">
-<a href="index.html" onclick="closeMenu()">Home</a>
-<a href="services.html" onclick="closeMenu()">Services</a>
-<a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
-<a href="courses.html" onclick="closeMenu()">Courses</a>
-<a href="about.html" onclick="closeMenu()">About</a>
-<a href="booking.html" onclick="closeMenu()">Booking</a>
-</div></nav><!-- HERO --><section class="hero hero-glow fade-up" style="padding:100px 5%; text-align:center;"><h1 style="font-size:3rem; margin-bottom:20px;">
-Selected Projects
-</h1><p style="
-max-width:800px;
-margin:auto;
-opacity:.8;
-font-size:1.1rem;
-">
-Every project represents a real problem solved through thoughtful design,
-clean architecture, and practical development. These case studies show how
-ideas are transformed into digital systems that people can actually use.
-</p></section><!-- PROJECT SHOWCASE --><section style="padding:40px 5% 80px 5%;"><div class="portfolio-grid"><a href="digital-booking.html"><div class="portfolio-card booking-card fade-up"><div class="project-badge badge-blue">
-Digital System
-</div><h2 class="project-title">
-Digital Booking System API
-</h2><p class="project-text">
-A complete booking management system designed to handle appointments,
-client records, service management, scheduling workflows, and secure API
-communication between frontend and backend platforms.
-</p><div class="project-link">
-View Case Study →
-</div></div></a><a href="web-development.html"><div class="portfolio-card web-card fade-up"><div class="project-badge badge-pink">
-Web Development
-</div><h2 class="project-title">
-Web Development Projects
-</h2><p class="project-text">
-Modern websites focused on speed, mobile responsiveness, conversion,
-clean user experience, and scalable design systems built to support
-long-term business growth.
-</p><div class="project-link">
-View Case Study →
-</div></div></a><a href="software-testing.html"><div class="portfolio-card testing-card fade-up"><div class="project-badge badge-green">
-Testing & Validation
-</div><h2 class="project-title">
-Software Architecture Testing
-</h2><p class="project-text">
-System validation, API testing, workflow analysis, and quality assurance
-processes designed to improve reliability, stability, performance,
-and user trust.
-</p><div class="project-link">
-View Case Study →
-</div></div></a></div></section><!-- STORY SECTION --><section style="
-padding:80px 5%;
-max-width:1100px;
-margin:auto;
-text-align:center;
-"><h2 style="margin-bottom:20px;">
-More Than Just Code
-</h2><p style="
-opacity:.8;
-line-height:1.9;
-max-width:850px;
-margin:auto;
-">
-A successful digital product is not measured by how much code was written.
-It is measured by how effectively it solves a problem. Every project in
-this portfolio was built with that philosophy in mind. The goal is always
-to create experiences that are useful, reliable, and meaningful for the
-people who use them.
-</p></section><!-- CTA --><section style="
-text-align:center;
-padding:90px 5%;
-"><h2>
-Ready To Build Something Great?
-</h2><p style="
-opacity:.75;
-margin:20px 0 30px 0;
-">
-Whether you need a website, a booking system, or a custom platform,
-let's turn your idea into something real.
-</p><a href="booking.html">
-<button>
-Start Your Project
-</button>
-</a></section><footer style="
-text-align:center;
-padding:40px;
-opacity:.6;
-">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio | MillieDev</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="logo">MillieDev</div>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="menu-container" id="menu">
+        <a href="index.html" onclick="closeMenu()">Home</a>
+        <a href="services.html" onclick="closeMenu()">Services</a>
+        <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
+        <a href="courses.html" onclick="closeMenu()">Courses</a>
+        <a href="about.html" onclick="closeMenu()">About</a>
+        <a href="booking.html" onclick="closeMenu()">Booking</a>
+    </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero animate-left"
+style="padding:100px 5%; text-align:center;">
+
+    <h1 style="font-size:3rem; margin-bottom:20px;">
+        Selected Projects
+    </h1>
+
+    <p style="max-width:800px; margin:auto; opacity:.8; font-size:1.1rem;">
+        Every project represents a real problem solved through thoughtful design,
+        clean architecture, and practical development. These case studies show how
+        ideas are transformed into digital systems that actually work.
+    </p>
+
+</section>
+
+<!-- ================= PORTFOLIO GRID ================= -->
+<section style="padding:40px 5% 80px 5%;">
+
+<div class="portfolio-grid">
+
+    <!-- CARD 1 -->
+    <a href="digital-booking.html" class="portfolio-card fade-up">
+
+        <div style="color:var(--primary); font-weight:600; margin-bottom:10px;">
+            Digital System
+        </div>
+
+        <h2>Digital Booking System API</h2>
+
+        <p style="opacity:.8; margin-top:10px;">
+            A complete booking management system designed for appointments,
+            scheduling workflows, client management, and API integration.
+        </p>
+
+        <div style="margin-top:15px; color:var(--primary); font-weight:600;">
+            View Case Study →
+        </div>
+
+    </a>
+
+    <!-- CARD 2 -->
+    <a href="web-development.html" class="portfolio-card fade-up">
+
+        <div style="color:var(--accent); font-weight:600; margin-bottom:10px;">
+            Web Development
+        </div>
+
+        <h2>Web Development Projects</h2>
+
+        <p style="opacity:.8; margin-top:10px;">
+            Modern websites focused on speed, responsiveness, conversion,
+            and scalable UI systems.
+        </p>
+
+        <div style="margin-top:15px; color:var(--primary); font-weight:600;">
+            View Case Study →
+        </div>
+
+    </a>
+
+    <!-- CARD 3 -->
+    <a href="software-testing.html" class="portfolio-card fade-up">
+
+        <div style="color:var(--success); font-weight:600; margin-bottom:10px;">
+            Testing & Validation
+        </div>
+
+        <h2>Software Architecture Testing</h2>
+
+        <p style="opacity:.8; margin-top:10px;">
+            API testing, system validation, workflow analysis,
+            and performance optimization for stable systems.
+        </p>
+
+        <div style="margin-top:15px; color:var(--primary); font-weight:600;">
+            View Case Study →
+        </div>
+
+    </a>
+
+</div>
+
+</section>
+
+<!-- ================= STORY SECTION ================= -->
+<section class="fade-up"
+style="padding:80px 5%; max-width:1100px; margin:auto; text-align:center;">
+
+<h2 style="margin-bottom:20px;">More Than Just Code</h2>
+
+<p style="opacity:.8; line-height:1.9; max-width:850px; margin:auto;">
+Every project in this portfolio is built with one goal: solve real problems.
+Not just code, but systems that actually function in the real world,
+designed for users, businesses, and scalability.
+</p>
+
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="fade-up"
+style="text-align:center; padding:90px 5%;">
+
+<h2>Ready To Build Something Great?</h2>
+
+<p style="opacity:.75; margin:20px 0 30px 0;">
+Let’s turn your idea into a real digital product.
+</p>
+
+<a href="booking.html">
+<button>Start Your Project</button>
+</a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer style="text-align:center; padding:40px; opacity:.6;">
 © 2026 MillieDev Portfolio
-</footer><script>
+</footer>
+
+<!-- ================= SCRIPT ================= -->
+<script>
 
 function toggleMenu() {
-document.getElementById("menu").classList.toggle("active");
+    document.getElementById("menu").classList.toggle("active");
 }
 
 function closeMenu() {
-document.getElementById("menu").classList.remove("active");
+    document.getElementById("menu").classList.remove("active");
 }
 
 window.addEventListener("load", () => {
-document.getElementById("menu").classList.remove("active");
+    document.getElementById("menu").classList.remove("active");
+
+    // trigger scroll animations on load
+    revealOnScroll();
 });
 
 document.addEventListener("click", function(e){
+    const menu = document.getElementById("menu");
+    const btn = document.querySelector(".menu-btn");
 
-const menu = document.getElementById("menu");
-const btn = document.querySelector(".menu-btn");
+    if(!menu || !btn) return;
 
-if(!menu || !btn) return;
-
-if(
-!menu.contains(e.target) &&
-!btn.contains(e.target)
-){
-menu.classList.remove("active");
-}
-
+    if(!menu.contains(e.target) && !btn.contains(e.target)){
+        menu.classList.remove("active");
+    }
 });
 
-</script></body>
+/* LEVEL 9 SCROLL ENGINE (MATCHING HOMEPAGE) */
+function revealOnScroll() {
+    const elements = document.querySelectorAll(".fade-up");
+
+    elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if(top < windowHeight - 80) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+</script>
+
+</body>
 </html>
